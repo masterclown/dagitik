@@ -1,1 +1,24 @@
 # dagitik
+import numpy as np
+import matplotlib.pyplot as plt
+
+ort1, ort2, ss1, ss2, n = 3, 4, 1, 1, 10000
+
+array1 = np.random.normal(ort1, ss1, n)
+array2 = np.random.normal(ort2, ss2, n)
+histo1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+histo2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+    
+print(array1)
+print(array2)
+
+
+
+z, bins, count = plt.hist(array1, 40, normed=True)
+z, bins, count = plt.hist(array2, 40, normed=True)
+plt.plot(bins, 1/(ss1 * np.sqrt(2 * np.pi)) *
+ np.exp( - (bins - ort1)**2 / (2 * ss1**2) ), linewidth=2, color='r')
+plt.plot(bins, 1/(ss2 * np.sqrt(2 * np.pi)) *
+ np.exp( - (bins - ort2)**2 / (2 * ss1**2) ), linewidth=2, color='orange')
+plt.show()
