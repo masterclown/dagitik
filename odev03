@@ -1,23 +1,75 @@
-
 fo = open(r'C:\Users\adale\Desktop\1727.txt', 'r+')
 
 # s = shifting
 # l = lenght of reading
 # n = number of threads or children
 
-s = 5
-l = 15
+s = 5 
+l = 250
 i = 0
 str = fo.read(l)
 for letter in str :
     if ord(str[i]) >= 65 and ord(str[i])<= 90:
-        key = chr(ord(str[i]) + 32)
-        str = str.replace(str[i], key )
+        lowered = chr(ord(str[i]) + 32)
+        str = str.replace(str[i], lowered )
         i += 1
     else:
         i += 1
+
+def encCeasar(message, num):
+    num = -num 
+    translated = '' 
+    for symbol in message:
+        if symbol.isspace(): 
+            translated += chr(32) 
+            continue       
+        if symbol.isalpha():
+           tmp = ord(symbol)          
+           tmp += num
+           
+           if symbol.isupper():
+                 if tmp > ord('Z'):
+                     tmp -= 26
+                 elif tmp < ord('A'):
+                     tmp += 26
+           elif symbol.islower():
+                 if tmp > ord('z'):
+                     tmp -= 26
+                 elif tmp < ord('a'):
+                     tmp += 26
+        translated += chr(tmp)
+       
+    return translated
+    
+def decCeasar(message, num):       
+    translated = '' 
+    for symbol in message:
+        if symbol.isspace(): 
+            translated += chr(32) 
+            continue       
+        if symbol.isalpha():
+           tmp = ord(symbol)          
+           tmp += num
+           
+           if symbol.isupper():
+                 if tmp > ord('Z'):
+                     tmp -= 26
+                 elif tmp < ord('A'):
+                     tmp += 26
+           elif symbol.islower():
+                 if tmp > ord('z'):
+                     tmp -= 26
+                 elif tmp < ord('a'):
+                     tmp += 26
+        translated += chr(tmp)
+       
+    return translated    
+
+
 print " " , str
-print" " , key
+print " ", encCeasar(str, s)
+print " ", decCeasar(encCeasar(str,s),s)
+print" " , lowered
 
 fw = open(r'C:\Users\adale\Desktop\output.txt', 'wb')
 
@@ -25,4 +77,3 @@ fw.write(str)
 
 fw.close()
 fo.close()
-
