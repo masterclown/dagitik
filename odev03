@@ -1,1 +1,20 @@
 
+fo = open(r'C:\Users\adale\Desktop\td.txt', 'r+')
+
+# s = shifting
+# l = lenght of reading
+# n = number of threads or children
+
+s = 5
+l = 15
+
+str = fo.read(l)
+
+print " " , str
+
+fw = open(r'C:\Users\adale\Desktop\output.txt', 'wb')
+
+fw.write(str)
+
+fw.close()
+fo.close()
