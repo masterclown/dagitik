@@ -1,5 +1,5 @@
 
-fo = open(r'C:\Users\adale\Desktop\td.txt', 'r+')
+fo = open(r'C:\Users\adale\Desktop\1727.txt', 'r+')
 
 # s = shifting
 # l = lenght of reading
@@ -7,10 +7,17 @@ fo = open(r'C:\Users\adale\Desktop\td.txt', 'r+')
 
 s = 5
 l = 15
-
+i = 0
 str = fo.read(l)
-
+for letter in str :
+    if ord(str[i]) >= 65 and ord(str[i])<= 90:
+        key = chr(ord(str[i]) + 32)
+        str = str.replace(str[i], key )
+        i += 1
+    else:
+        i += 1
 print " " , str
+print" " , key
 
 fw = open(r'C:\Users\adale\Desktop\output.txt', 'wb')
 
@@ -18,3 +25,4 @@ fw.write(str)
 
 fw.close()
 fo.close()
+
